@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="6f14328a-9e87-4884-b78a-adb8f3623d87" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="travis-ci-demo-appFlow" doc:id="bd1f7ecf-db2f-402e-bcae-798cedfd5b16" >
+		<http:listener doc:name="Listener" doc:id="edab2a45-c799-4fe9-944c-328b69e6dbfe" config-ref="HTTP_Listener_config" path="/travis"/>
+		<set-payload value="#[payload]" doc:name="Set Payload" doc:id="f7cb944b-6b46-44f4-a4f4-6230ecb1834e" />
+	</flow>
+</mule>
